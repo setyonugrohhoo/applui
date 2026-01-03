@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedRemind - Aplikasi Pengingat Obat</title>
+    <link rel="stylesheet" href="pengingatobat.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="login-page" class="flex-center">
+        <div class="login-card fade-in">
+            <div class="logo">💊</div>
+            <h1>MedRemind</h1>
+            <p>Sistem Pengingat Obat Pintar</p>
+            <div class="login-options">
+                <button class="btn btn-nakes" onclick="login('nakes')">
+                    <i class="fas fa-user-md"></i> Masuk sebagai Nakes
+                </button>
+                <button class="btn btn-pasien" onclick="login('pasien')">
+                    <i class="fas fa-user-injured"></i> Masuk sebagai Pasien
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-container" style="display: none;">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h3>MedRemind</h3>
+            </div>
+            <ul class="nav-links">
+                <li class="active" onclick="switchTab('dashboard')">
+                    <i class="fas fa-home"></i> <span>Dashboard</span>
+                </li>
+                <li id="nav-input" onclick="switchTab('input-obat')">
+                    <i class="fas fa-plus-circle"></i> <span>Input Obat</span>
+                </li>
+                <li onclick="switchTab('jadwal-obat')">
+                    <i class="fas fa-calendar-alt"></i> <span>Jadwal Obat</span>
+                </li>
+                <li onclick="switchTab('riwayat')">
+                    <i class="fas fa-history"></i> <span>Riwayat</span>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Keluar
+                </button>
+            </div>
+        </nav>
+
+        <main class="content">
+            <header class="content-header">
+                <h2 id="page-title">Dashboard</h2>
+                <div class="user-badge" id="user-display">Nakes</div>
+            </header>
+
+            <section id="tab-dashboard" class="tab-content active">
+                <div class="welcome-card fade-in">
+                    <h2 id="welcome-text">Selamat Datang!</h2>
+                    <p id="welcome-subtext">Mari kelola kesehatan hari ini.</p>
+                </div>
+            </section>
+
+            <section id="tab-input-obat" class="tab-content">
+                <div class="card fade-in">
+                    <h3>Tambah Jadwal Baru</h3>
+                    <div class="form-group">
+                        <label>Nama Obat</label>
+                        <input type="text" id="nama-obat" placeholder="Misal: Amoxicillin">
+                    </div>
+                    <div class="form-group">
+                        <label>Waktu Konsumsi</label>
+                        <input type="time" id="waktu-obat">
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi/Foto</label>
+                        <textarea id="desc-obat" placeholder="Contoh: 1 Tablet setelah makan"></textarea>
+                        <input type="file" id="foto-obat">
+                    </div>
+                    <button class="btn btn-nakes" onclick="addMedication()">Simpan ke Jadwal</button>
+                </div>
+            </section>
+
+            <section id="tab-jadwal-obat" class="tab-content">
+                <div id="medication-list" class="med-grid">
+                    </div>
+            </section>
+
+            <section id="tab-riwayat" class="tab-content">
+                <div class="card fade-in">
+                    <div id="history-list">
+                        <p class="empty-state">Belum ada aktivitas riwayat.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
